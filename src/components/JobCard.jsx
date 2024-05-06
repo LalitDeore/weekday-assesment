@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Typography, Button } from '@mui/material';
-
 const JobCard = ({ job }) => {
-    const [showViewJobButton, setShowViewJobButton] = useState(false);
 
     const boxStyling = {
         minHeight: 550,
@@ -23,10 +21,6 @@ const JobCard = ({ job }) => {
         textDecoration: "none",
         padding: 0
     };
-
-    const toggleBlur = () => {
-        setShowViewJobButton(true);
-    }
 
     return (
         <Card elevation={3} style={boxStyling}>
@@ -63,14 +57,16 @@ const JobCard = ({ job }) => {
                             {job.jobDetailsFromCompany.substring(job.jobDetailsFromCompany.length - 150)}
                         </Typography>
                         <Typography variant='body2' style={{ display: 'flex', alignItems: 'flex-start', fontSize: 14, whiteSpace: "pre-wrap", display: 'flex', justifyContent: 'center', textAlign: "center" }}>
-                            {!showViewJobButton && <Button style={viewJobButtonStyle} onClick={toggleBlur}>View Job</Button>}
+                            <Button style={viewJobButtonStyle} >View Job</Button>
                         </Typography>
                     </Typography>
                     <div style={{ height: 50, display: "flex", flexDirection: 'column', alignItems: 'flex-start' }}>
                         <Typography variant='body2' style={{ marginTop: 10, fontSize: 13, fontWeight: 600, letterSpacing: 1, marginBottom: 3, color: "#8b8b8b" }}>{job && job.minExp && "Minimum Experience"}</Typography>
                         <Typography variant='body2' style={{ fontSize: 14, lineHeight: 1.5 }}>{job && job.minExp && job.minExp + " " + "years"}</Typography>
                     </div>
-                    <Button style={{ backgroundColor: "rgb(85, 239, 196)", width: "100%", marginTop: 15, color: "rgb(0, 0, 0)", textTransform: 'none', padding: '8px 18px', }}>⚡ Easy Apply</Button>
+                    <a href={job.jdLink} target="_blank" rel="noopener noreferrer">
+                        <Button style={{ backgroundColor: "rgb(85, 239, 196)", width: "100%", marginTop: 15, color: "rgb(0, 0, 0)", textTransform: 'none', padding: '8px 18px' }}>⚡ Easy Apply</Button>
+                    </a>
                 </Typography>
             </CardContent>
         </Card>
