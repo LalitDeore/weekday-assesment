@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import JobCard from "./JobCard";
 import { Grid } from "@mui/material";
 
+//added infinite scroller to the website
 const JobGrid = ({ location, companyName, experience, role, minBasePay }) => {
     const [allJobData, setAllJobData] = useState({ jdList: [] });
     const [displayedJobData, setDisplayedJobData] = useState(null);
